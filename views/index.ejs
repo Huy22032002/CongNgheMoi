@@ -10,9 +10,40 @@
 
 <body>
     <div class="content">
-        <h1>
-            Hello World!
-        </h1>
+        <table>
+            <caption>My Table</caption>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Semester</th>
+                    <th>Faculty</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% courses.forEach(item =>{ %>
+                    <tr>
+                        <td>
+                            <%= item.id  %>
+                        </td>
+                        <td>
+                            <%= item.name  %>
+                        </td>
+                        <td>
+                            <%= item.type  %>
+                        </td>
+                        <td>
+                            <%= item.semester  %>
+                        </td>
+                        <td>
+                            <%= item.faculty  %>
+                        </td>
+                    </tr>
+
+                    <%   }); %>
+            </tbody>
+        </table>
     </div>
 </body>
 

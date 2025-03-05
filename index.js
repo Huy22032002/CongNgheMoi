@@ -1,13 +1,16 @@
 const express = require('express');
 const app = express();
 
-app.use(express.json({ extended: false }));
-app.use(express.static('./views'));
-app.set('view engine', 'ejs');
-app.set('views', './views');
+const courses = require('./data');
+
+app.use(express.urlencoded({ extended: true })); //app.use cai dat middle wares
+app.use(express.static('./views')); //allow to use static resourses such as css,js,imgs
+
+app.set('view engine', 'ejs'); //declare to inform that app will use engine ejs to render the web page
+app.set('views', './views'); // content render's web page will in the folder "views"
 
 app.get('/', (request, response) => {
-    return response.render('index');
+    return response.render('index', { courses });
 });
 
 app.listen(8080, () => {
