@@ -1,14 +1,15 @@
-function myFnc(myCB) {
-    for (var i = 0; i < 10; i++) {
-        if (i % 2 == 0) {
-            continue;
-        }
-        myCB();
-    }
-}
+const express = require('express');
+const app = express();
 
-function myCallBack() {
-    console.log("hi");
-}
+app.use(express.json({ extended: false }));
+app.use(express.static('./views'));
+app.set('view engine', 'ejs');
+app.set('views', './views');
 
-myFnc(myCallBack);
+app.get('/', (request, response) => {
+    return response.render('index');
+});
+
+app.listen(8080, () => {
+    console.log("server is running on 8080");
+})
